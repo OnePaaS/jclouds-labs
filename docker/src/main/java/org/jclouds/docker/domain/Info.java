@@ -16,12 +16,11 @@
  */
 package org.jclouds.docker.domain;
 
-import java.util.List;
-
+import com.google.auto.value.AutoValue;
 import org.jclouds.javax.annotation.Nullable;
 import org.jclouds.json.SerializedNames;
 
-import com.google.auto.value.AutoValue;
+import java.util.List;
 
 @AutoValue
 public abstract class Info {

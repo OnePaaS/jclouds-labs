@@ -26,7 +26,9 @@ import static org.testng.Assert.assertTrue;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.NoSuchElementException;
 
+import org.jclouds.docker.DockerApi;
 import org.jclouds.docker.compute.BaseDockerApiLiveTest;
 import org.jclouds.docker.domain.Config;
 import org.jclouds.docker.domain.Container;
@@ -37,6 +39,9 @@ import org.jclouds.docker.options.AttachOptions;
 import org.jclouds.docker.options.CreateImageOptions;
 import org.jclouds.docker.options.ListContainerOptions;
 import org.jclouds.docker.options.RemoveContainerOptions;
+import org.jclouds.providers.AnonymousProviderMetadata;
+import org.jclouds.providers.ProviderMetadata;
+import org.jclouds.providers.Providers;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -47,8 +52,18 @@ import com.google.common.collect.ImmutableList;
 public class ContainerApiLiveTest extends BaseDockerApiLiveTest {
 
    private Container container = null;
-   protected static final String BUSYBOX_IMAGE_TAG = "busybox:ubuntu-12.04";
+   protected static final String BUSYBOX_IMAGE_TAG = "hello-world:latest";
    protected Image image = null;
+
+   protected ProviderMetadata createProviderMetadata() {
+      System.out.println("bbbbbbb ................");
+      try {
+         return Providers.withId(this.provider);
+      } catch (NoSuchElementException var2) {
+         ProviderMetadata test = AnonymousProviderMetadata.forApiOnEndpoint(DockerApi.class, "http://192.168.16.14:8888");
+         return test;
+      }
+   }
 
    @BeforeClass
    protected void init() {

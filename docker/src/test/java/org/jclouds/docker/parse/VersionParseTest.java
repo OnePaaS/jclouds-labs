@@ -43,4 +43,5 @@ public class VersionParseTest extends BaseDockerParseTest<Version> {
               "linux",
               "1.3.0");
    }
+
 }

@@ -20,9 +20,14 @@ import static org.testng.Assert.assertNotNull;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.util.NoSuchElementException;
 
+import org.jclouds.docker.DockerApi;
 import org.jclouds.docker.compute.BaseDockerApiLiveTest;
 import org.jclouds.docker.options.BuildOptions;
+import org.jclouds.providers.AnonymousProviderMetadata;
+import org.jclouds.providers.ProviderMetadata;
+import org.jclouds.providers.Providers;
 import org.testng.annotations.Test;
 
 import com.google.common.base.Splitter;
@@ -32,6 +37,16 @@ import com.google.common.collect.Iterables;
 public class MiscApiLiveTest extends BaseDockerApiLiveTest {
 
    private static String imageId;
+
+   protected ProviderMetadata createProviderMetadata() {
+      System.out.println("bbbbbbb ................");
+      try {
+         return Providers.withId(this.provider);
+      } catch (NoSuchElementException var2) {
+         ProviderMetadata test = AnonymousProviderMetadata.forApiOnEndpoint(DockerApi.class, "http://192.168.16.14:8888");
+         return test;
+      }
+   }
 
    @Test
    public void testVersion() {

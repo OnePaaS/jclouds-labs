@@ -34,10 +34,10 @@
   <packaging>bundle</packaging>
 
   <properties>
-    <test.docker.endpoint>https://localhost:4243</test.docker.endpoint>
+    <test.docker.endpoint>https://192.168.59.103:2376</test.docker.endpoint>
     <test.docker.api-version>1.15</test.docker.api-version>
-    <test.docker.identity>FIXME</test.docker.identity>
-    <test.docker.credential>FIXME</test.docker.credential>
+    <test.docker.identity>test</test.docker.identity>
+    <test.docker.credential>test</test.docker.credential>
     <jclouds.osgi.export>org.jclouds.docker*;version="${project.version}"</jclouds.osgi.export>
     <jclouds.osgi.import>
       org.jclouds.compute.internal;version="${project.version}",
@@ -46,6 +46,21 @@
       *
     </jclouds.osgi.import>
   </properties>
+
+  <distributionManagement>
+    <!--告诉Maven当我要发布release版本或者snapshot版本时，把构建好的成品上传到哪个服务器地址-->
+    <repository>
+      <!--项目发布到私服地址配置，该id需要和setting.xml中server中的id保持一致，否则发布失败-->
+      <id>my-mvn-releases</id>
+      <name>mvn-releases-Repository</name>
+      <url>http://127.0.0.1:8081/nexus/content/repositories/releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>my-mvn-snapshots</id>
+      <name>mvn-snapshots-Repository</name>
+      <url>http://127.0.0.1:8081/nexus/content/repositories/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
 
   <dependencies>
     <dependency>
