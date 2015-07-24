@@ -16,13 +16,14 @@
  */
 package org.jclouds.docker.domain;
 
+import org.jclouds.javax.annotation.Nullable;
 import org.jclouds.json.SerializedNames;
 
 import com.google.auto.value.AutoValue;
 
 @AutoValue
 public abstract class Port {
-   public abstract String ip();
+   @Nullable  public abstract String ip();
 
    public abstract int privatePort();
 

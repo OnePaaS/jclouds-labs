@@ -19,6 +19,7 @@ package org.jclouds.docker.domain;
 import static org.jclouds.docker.internal.NullSafeCopies.copyOf;
 import java.util.List;
 
+import org.jclouds.javax.annotation.Nullable;
 import org.jclouds.json.SerializedNames;
 
 import com.google.auto.value.AutoValue;
@@ -31,7 +32,7 @@ public abstract class ImageSummary {
 
    public abstract long created();
 
-   public abstract String parentId();
+   @Nullable  public abstract String parent();
 
    public abstract int size();
 
@@ -42,10 +43,10 @@ public abstract class ImageSummary {
    ImageSummary() {
    }
 
-   @SerializedNames({"Id", "Created", "ParentId", "Size", "VirtualSize", "RepoTags"})
-   public static ImageSummary create(String id, long created, String parentId, int size, int virtualSize,
+   @SerializedNames({"Id", "Created", "Parent", "Size", "VirtualSize", "RepoTags"})
+   public static ImageSummary create(String id, long created, String parent, int size, int virtualSize,
                                      List<String> repoTags) {
-      return new AutoValue_ImageSummary(id, created, parentId, size, virtualSize, copyOf(repoTags));
+      return new AutoValue_ImageSummary(id, created, parent, size, virtualSize, copyOf(repoTags));
    }
 
 }

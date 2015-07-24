@@ -32,7 +32,7 @@ import org.jclouds.io.Payload;
 import org.jclouds.rest.annotations.Headers;
 
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("/v{jclouds.api-version}")
+//@Path("/v{jclouds.api-version}")
 public interface MiscApi {
 
    /**

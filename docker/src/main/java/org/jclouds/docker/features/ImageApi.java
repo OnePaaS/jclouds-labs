@@ -39,7 +39,7 @@ import org.jclouds.javax.annotation.Nullable;
 import org.jclouds.rest.annotations.Fallback;
 
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("/v{jclouds.api-version}")
+//@Path("/v{jclouds.api-version}")
 public interface ImageApi {
 
    /**
