@@ -66,6 +66,7 @@
 
   <modules>
     <module>azurecompute</module>
+    <module>etcd</module>
     <module>docker</module>
     <module>cdmi</module>
     <module>cloudsigma2</module>
@@ -81,7 +82,6 @@
     <module>joyentcloud</module>
     <module>abiquo</module>
     <module>profitbricks</module>
-    <module>shipyard</module>
   </modules>
 
   <build>
