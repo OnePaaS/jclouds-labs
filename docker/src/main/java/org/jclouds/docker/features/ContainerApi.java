@@ -47,7 +47,7 @@ import org.jclouds.rest.annotations.Fallback;
 import org.jclouds.rest.binders.BindToJsonPayload;
 
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("/v{jclouds.api-version}")
+//@Path("/v{jclouds.api-version}")
 public interface ContainerApi {
 
    /**
